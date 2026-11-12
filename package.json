@@ -1,0 +1,91 @@
+{
+  "name": "dsh-email-send",
+  "version": "1.0.0",
+  "description": "DeepSeek Harness 插件：为助手提供 send_email 工具，SMTP 在「设置 → 邮件发送」配置。",
+  "type": "module",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "author": "Vergil-long",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhoudi520/dsh-send-email.git"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "keywords": [
+    "deepseek",
+    "deepseek-harness",
+    "harness",
+    "dsh",
+    "dsh-plugin",
+    "plugin",
+    "email",
+    "smtp",
+    "send_email"
+  ],
+  "movo": {
+    "configContract": "1",
+    "configurable": true,
+    "configEntry": "./movo/config-ui.mjs",
+    "configAssets": [],
+    "secretFields": ["smtp.pass"],
+    "configMount": {
+      "kind": "dsh_home_subdir",
+      "subdir": "dsh-email-send",
+      "file": "config.json"
+    },
+    "configTest": "smtp_test",
+    "configDefaults": {
+      "enabled": true,
+      "testTo": "",
+      "smtp": {
+        "host": "smtp.qq.com",
+        "port": 465,
+        "secure": true,
+        "rejectUnauthorized": true,
+        "allowInsecure": false,
+        "user": "",
+        "pass": "",
+        "from": "",
+        "fromName": "BackMan AI"
+      }
+    }
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [],
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": "./client/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "client",
+    "movo",
+    "scripts",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node test/manifest.test.mjs && node test/smtp.test.mjs && node test/plugin.test.mjs && node test/client.test.mjs",
+    "test:manifest": "node test/manifest.test.mjs",
+    "test:smtp": "node test/smtp.test.mjs",
+    "test:plugin": "node test/plugin.test.mjs",
+    "test:client": "node test/client.test.mjs",
+    "send-test": "node scripts/send-test.mjs",
+    "install:profile": "node scripts/install.mjs"
+  }
+}

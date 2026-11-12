@@ -1,0 +1,5 @@
+# dsh-email-send bundle patch
+
+- insert:
+    - id: dsh-email-send
+      name: 'dsh-email-send'

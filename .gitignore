@@ -1,0 +1,32 @@
+# 依赖与构建产物（本插件零依赖，正常不会有这两个目录）
+node_modules/
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# 本地配置与凭据：绝不能进仓库
+config.json
+*.local.json
+.env
+.env.*
+!.env.example
+
+# npm pack 产物
+*.tgz
+
+# 日志与临时文件
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# 工作区内部交接文档（含本机路径与个人邮箱，不适合公开）
+项目说明.md
+继续工作-交接.md
+
+# 提交到「精选列表」用的条目文件（那是发给别人仓库的东西，不属于本插件）
+收录提交/
+
+# 编辑器
+.vscode/
+.idea/
